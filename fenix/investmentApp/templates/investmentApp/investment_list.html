@@ -1,0 +1,10 @@
+{% extends 'mainApp/base.html' %}
+
+{% block content %}
+<h1>Investment List</h1>
+<ul>
+{% for Investment in investments %}
+    <li><a href="{% url 'investment_detail' investment.pk %}">{{ investment.amount }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
