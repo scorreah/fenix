@@ -25,7 +25,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
-                    <a class="nav-link" href="#">Proyectos</a>
+                    <a class="nav-link" href="{% url 'projects.index' %}">Proyectos</a>
                     {% if user.is_authenticated %}
                     <a class="nav-link" href="#">
                         Logout ({{ user.username }})
