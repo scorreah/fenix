@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- {% for project in projects %}
+{% endfor %} -->
+<!-- our shop -->
+<section class="shop" id="shop">
+    <div class="middle-text">
+        <h4>Proyectos</h4>
+        <h2>Visualiza proyectos e invierte</h2>
+    </div>
+    <div class="shop-content">
+        {% for project in projects %}
+        <!-- <div class="card" style="width: 18rem; background-color: grey;">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div> -->
+        {% endfor %}
+    </div>
+
+    <div class="row-btn">
+        <a href="" class="btn">All Products</a>
+    </div>
+</section>
+
+{% endblock content %}
