@@ -1,10 +1,10 @@
 from django import forms
-from projectowner.models import ProjectOwner
+from investor.models import Investor
 from accounts.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 
-class ProjectOwnerCreationForm(UserCreationForm):
+class InvestorCreationForm(UserCreationForm):
     password1 = forms.CharField(label='password1', widget=forms.PasswordInput(
         attrs={
             'class':'form-control',
@@ -51,11 +51,11 @@ class ProjectOwnerCreationForm(UserCreationForm):
         user = User.objects.create_user(self.cleaned_data['username'], self.cleaned_data['email']) 
         user.last_name = self.cleaned_data['last_name']
         user.first_name = self.cleaned_data['first_name']
-        user.user_project_owner = True
+        user.user_investor = True
         user.set_password(self.cleaned_data['password1'])
         user.save()
         data = {
             'user': user,
         }
-        project_owner = ProjectOwner.objects.create(**data)
-        project_owner.save()
+        investor = Investor.objects.create(**data)
+        investor.save()
