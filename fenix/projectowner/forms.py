@@ -33,19 +33,28 @@ class ProjectOwnerCreationForm(UserCreationForm):
             raise forms.ValidationError('The username is not available')
         return username
 
+    def clean_email(self):
+        email = self.cleaned_data["email"]
+        if User.objects.filter(email = email).exists():
+            raise forms.ValidationError('The email is not available')
+        return email
+    
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
         if password1 and password2 and password1 != password2:
             raise forms.ValidationError('Contraseñas no coinciden!')
         return password2
+    
 
-    def save(self, commit=True):
-        user = super(ProjectOwnerCreationForm, self).save(commit=False)
-        user.email = self.cleaned_data['email']
+    def save(self):
+        user = User.objects.create_user(self.cleaned_data['username'], self.cleaned_data['email']) 
+        user.last_name = self.cleaned_data['last_name']
+        user.first_name = self.cleaned_data['first_name']
         user.user_project_owner = True
+        user.set_password(self.cleaned_data['password1'])
         user.save()
-        project_owner = ProjectOwner.objects.create(user=user)
-        if commit:
-            project_owner.save()
-        return project_owner
+        data = {
+            'user': user,
+        }
+        project_owner = ProjectOwner.objects.create(**data)

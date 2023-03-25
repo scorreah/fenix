@@ -1,5 +1,7 @@
-from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
+from django.contrib import admin 
 from .models import User
 
-admin.site.register(User, UserAdmin)
+@admin.register(User) 
+class UserAdmin(admin.ModelAdmin): 
+    """User admin.""" 
+    list_display = ('username', 'first_name', 'last_name', 'email','user_investor', 'user_project_owner')
