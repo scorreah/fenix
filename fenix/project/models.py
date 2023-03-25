@@ -14,7 +14,9 @@ class Project(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     user_owner = models.ForeignKey(ProjectOwner, blank = False, null = False, on_delete=models.CASCADE)
-    
+    is_approved = models.BooleanField(default=False)
+    user_owner = models.ForeignKey(ProjectOwner, blank = True, null = True, on_delete=models.CASCADE)
+
     def __str__(self):
         return self.title
 
