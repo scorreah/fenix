@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'project',
-    'accounts'
+    'accounts',
+    'projectowner',
+    'investor'
 ]
 
 MIDDLEWARE = [
@@ -144,3 +146,5 @@ MEDIA_URL = '/media/'
 
 
 LOGIN_URL = 'loginaccount'
+
+AUTH_USER_MODEL = 'accounts.User'
