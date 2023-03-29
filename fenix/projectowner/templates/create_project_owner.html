@@ -15,7 +15,7 @@
             <form method="post">
                 {% csrf_token %}
                 <div class="opciones">
-                    <label for="{{ f.id_for_label }}">Username</label>
+                    <label for="{{ f.id_for_label }}"></label>
                     <div class="form-warp">
                         {{form.username}}
                     </div>
@@ -28,7 +28,7 @@
                     {% endif %}
                 </div>
                 <div class="opciones">
-                    <label for="{{f.id_for_label}}">Nombre</label>
+                    <label for="{{f.id_for_label}}"></label>
                     <div class="form-warp">
                         {{form.first_name}}
                     </div>
@@ -41,7 +41,7 @@
                     {% endif %}
                 </div>
                 <div class="opciones">
-                    <label for="{{f.id_for_label}}">Apellido</label>
+                    <label for="{{f.id_for_label}}"></label>
                     <div class="form-warp">
                         {{form.last_name}}
                     </div>
@@ -54,7 +54,7 @@
                     {% endif %}
                 </div>
                 <div class="opciones">
-                    <label for="{{f.id_for_label}}">Correo</label>
+                    <label for="{{f.id_for_label}}"></label>
                     <div class="form-warp">
                         {{form.email}}
                     </div>
@@ -67,7 +67,7 @@
                     {% endif %}
                 </div>
                 <div class="opciones">
-                    <label for="{{f.id_for_label}}">Contraseña</label>
+                    <label for="{{f.id_for_label}}"></label>
                     <div class="form-warp">
                         {{form.password1}}
                     </div>
@@ -80,7 +80,7 @@
                     {% endif %}
                 </div>
                 <div class="opciones">
-                    <label for="{{f.id_for_label}}">Confirmacion contraseña</label>
+                    <label for="{{f.id_for_label}}"></label>
                     <div class="form-warp">
                         {{form.password2}}
                     </div>
