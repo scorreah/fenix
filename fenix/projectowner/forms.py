@@ -27,11 +27,11 @@ class ProjectOwnerCreationForm(UserCreationForm):
         model = User
         fields = ['username','first_name', 'last_name','email', 'password1', 'password2']
         widgets = {'email':forms.EmailInput(
-            attrs={'placeholder': 'ingrese correo electronico...',
+            attrs={'placeholder': 'Email...',
             }),
-            'first_name':forms.TextInput(attrs={'placeholder': 'ingrese nombre...'}),
-            'last_name':forms.TextInput(attrs={'placeholder':'ingrese apellido...'}),
-            'username':forms.TextInput(attrs={'placeholder': 'ingrese nombre usuario...'}),
+            'first_name':forms.TextInput(attrs={'placeholder': 'Name...'}),
+            'last_name':forms.TextInput(attrs={'placeholder':'Last name...'}),
+            'username':forms.TextInput(attrs={'placeholder': 'Username...'}),
         }
     
     def clean_username(self):
