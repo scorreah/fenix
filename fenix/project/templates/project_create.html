@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,15 +6,95 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
 </head>
 <body>
-    <section class="home" id="home">
-        <h2>Create Investor</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-        <button type="submit">Create</button>
-        </form>
-    </section>
+    <div class="homebox">
+        <section class="home" id="home">
+            <h2>Create project</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="opciones">
+                    <label for="{{ f.id_for_label }}"></label>
+                    <div class="form-warp">
+                        {{form.title}}
+                    </div>
+                    {% if form.title.errors %}
+                    <ul>
+                        {% for error in form.title.errors %}
+                            <li class="errores">{{error}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="opciones">
+                    <label for="{{f.id_for_label}}"></label>
+                    <div class="form-warp">
+                        {{form.description}}
+                    </div>
+                    {% if form.description.errors %}
+                    <ul>
+                        {% for error in form.description.errors %}
+                            <li class="errores">{{error}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="opciones">
+                    <label for="{{f.id_for_label}}"></label>
+                    <div class="form-warp">
+                        {{form.goal_amount}}
+                    </div>
+                    {% if form.goal_amount.errors %}
+                    <ul>
+                        {% for error in form.goal_amount.errors %}
+                            <li class="errores">{{error}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="opciones">
+                    <label for="{{f.id_for_label}}"></label>
+                    <div class="form-warp">
+                        {{form.start_date}}
+                    </div>
+                    {% if form.start_date.errors %}
+                    <ul>
+                        {% for error in form.start_date.errors %}
+                            <li class="errores">{{error}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="opciones">
+                    <label for="{{f.id_for_label}}"></label>
+                    <div class="form-warp">
+                        {{form.end_date}}
+                    </div>
+                    {% if form.end_date.errors %}
+                    <ul>
+                        {% for error in form.end_date.errors %}
+                            <li class="errores">{{error|escape}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="opciones">
+                    <label for="{{f.id_for_label}}"></label>
+                    <div class="form-warp">
+                        {{form.image}}
+                    </div>
+                    {% if form.image.errors %}
+                    <ul>
+                        {% for error in form.image.errors %}
+                            <li class="errores">{{error|escape}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <button type="submit">Create</button>
+            </form>
+        </section> 
+    </div>
 </body>
 </html>
