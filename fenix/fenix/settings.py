@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'project',
     'accounts',
     'projectowner',
-    'investor'
+    'investor',
+    'adminmanagement'
 ]
 
 MIDDLEWARE = [

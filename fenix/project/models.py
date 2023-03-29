@@ -20,6 +20,18 @@ class Project(models.Model):
     def __str__(self):
         return self.title
 
+    def get_is_approved(self):
+        return self.is_approved
+    
+    def get_title(self):
+        return self.title
+    
+    def get_description(self):
+        return self.description
+    
+    def get_goal_amount(self):
+        return self.goal_amount
+
     class Meta:
         verbose_name = 'Project'
         verbose_name_plural = 'Projects'
