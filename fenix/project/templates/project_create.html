@@ -12,7 +12,7 @@
     <div class="homebox">
         <section class="home" id="home">
             <h2>Create project</h2>
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="opciones">
                     <label for="{{ f.id_for_label }}"></label>

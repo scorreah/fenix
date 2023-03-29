@@ -12,7 +12,7 @@ class FormProject(forms.Form):
     goal_amount = forms.IntegerField(label='goal_amount',required=True, widget=forms.NumberInput(attrs={'placeholder':'Enter the goal amount..'}))
     start_date = forms.DateField(label='start_date', required=True, widget=DateInput)
     end_date = forms.DateField(label='end_date', required=True, widget=DateInput)
-    image = forms.ImageField(label='image', required = False)
+    image = forms.ImageField(label='image')
 
     def clean_goal_amount(self):
         goal_amount = self.cleaned_data['goal_amount']

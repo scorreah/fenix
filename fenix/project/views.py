@@ -24,7 +24,7 @@ def create_project(request):
     project_owner = ProjectOwner.objects.get(user = user)
 
     if request.method == 'POST':
-        form = FormProject(request.POST)
+        form = FormProject(request.POST, request.FILES)
         if form.is_valid():
             form.create(project_owner)
             projects = Project.objects.all()
