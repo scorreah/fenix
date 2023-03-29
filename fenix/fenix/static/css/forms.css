@@ -27,10 +27,11 @@ body{
     width: 400px;
     padding: 40px;
     transform: translate(-50%, -50%);
-    background: var(--main-color);
+    background: var(--other-color);
     box-sizing: border-box;
-    box-shadow: 0 15px 25px var(--main-color);
+    box-shadow: 0 15px 25px var(--other-color);
     border-radius: 10px;
+    border: solid var(--main-color);
 }
 
 .homebox h2{
@@ -48,10 +49,10 @@ body{
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
-    color: var(--bg-color);
+    color: var(--main-color);
     margin-bottom: 30px;
     border: none;
-    border-bottom: 1px solid var(--bg-color);
+    border-bottom: 1px solid var(--main-color);
     outline: none;
     background: transparent;
 }
@@ -71,7 +72,7 @@ body{
 .homebox .opciones input:valid ~ label {
     top: -20px;
     left: 0;
-    color: var(--bg-color);
+    color: var(--main-color);
     font-size: 12px;
 }
 
@@ -79,7 +80,7 @@ body{
     position: relative;
     display: inline-block;
     padding: 10px 20px;
-    color: var(--bg-color);
+    color: var(--main-color);
     font-size: 16px;
     text-decoration: none;
     text-transform: uppercase;
@@ -90,7 +91,7 @@ body{
 }
 
 .homebox a:hover{
-    background: var(--bg-color);
+    background: var(--main-color);
     color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 5px var(--bg-color),

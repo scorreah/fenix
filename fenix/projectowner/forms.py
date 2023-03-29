@@ -26,6 +26,13 @@ class ProjectOwnerCreationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username','first_name', 'last_name','email', 'password1', 'password2']
+        widgets = {'email':forms.EmailInput(
+            attrs={'placeholder': 'ingrese correo electronico...',
+            }),
+            'first_name':forms.TextInput(attrs={'placeholder': 'ingrese nombre...'}),
+            'last_name':forms.TextInput(attrs={'placeholder':'ingrese apellido...'}),
+            'username':forms.TextInput(attrs={'placeholder': 'ingrese nombre usuario...'}),
+        }
     
     def clean_username(self):
         username = self.cleaned_data["username"]
