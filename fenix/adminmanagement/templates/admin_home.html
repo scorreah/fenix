@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" tyoe="text/css" href="{% static 'css/cards.css' %}">
+{% endblock head %}
+
+{% block content %}
+<section class="project-title">
+    <h1>Projects</h1>
+</section>
+
+<section class="articles">
+    {% for project in projects %}
+        {% if project.is_approved != 1 %}
+        <article>
+            <div class="article-wrapper">
+                <figure>
+                    <img src="{{ project.image.url }}" alt="" />
+                </figure>
+                <div class="article-body">
+                    <h2>{{ project.title }}</h2>
+                    <p>
+                        {{ project.description }}
+                    </p>
+                </div>
+                <div>
+                  <form method="post" action="{% url 'accept' project.id %}">
+                    {% csrf_token %}
+                    <input type="submit" value="Approve" class="btn">
+                  </form>
+                </div>
+            </div>
+        </article>
+        {% endif %}
+    {% endfor %}
+</section>
+{% endblock content %}
