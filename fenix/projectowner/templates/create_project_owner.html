@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,93 +6,98 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
 </head>
 <body>
-    <section class="home" id="home">
-        <h2>Create Project Manager</h2>
-        <form method="post">
-            {% csrf_token %}
-            <div class="opciones">
-                <label for="{{ f.id_for_label }}">Username</label>
-                <div class="form-warp">
-                    {{form.username}}
+    <div class="homebox">
+        <section class="home" id="home">
+            <h2>Create Project Manager</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="opciones">
+                    <label for="{{ f.id_for_label }}">Username</label>
+                    <div class="form-warp">
+                        {{form.username}}
+                    </div>
+                    {% if form.username.errors %}
+                    <ul>
+                        {% for error in form.username.errors %}
+                            <li class="errores">{{error}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
                 </div>
-                {% if form.username.errors %}
-                <ul>
-                    {% for error in form.username.errors %}
-                        <li class="errores">{{error}}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </div>
-            <div class="opciones">
-                <label for="{{f.id_for_label}}">Nombre</label>
-                <div class="form-warp">
-                    {{form.first_name}}
+                <div class="opciones">
+                    <label for="{{f.id_for_label}}">Nombre</label>
+                    <div class="form-warp">
+                        {{form.first_name}}
+                    </div>
+                    {% if form.first_name.errors %}
+                    <ul>
+                        {% for error in form.first_name.errors %}
+                            <li class="errores">{{error}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
                 </div>
-                {% if form.first_name.errors %}
-                <ul>
-                    {% for error in form.first_name.errors %}
-                        <li class="errores">{{error}}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </div>
-            <div class="opciones">
-                <label for="{{f.id_for_label}}">Apellido</label>
-                <div class="form-warp">
-                    {{form.last_name}}
+                <div class="opciones">
+                    <label for="{{f.id_for_label}}">Apellido</label>
+                    <div class="form-warp">
+                        {{form.last_name}}
+                    </div>
+                    {% if form.last_name.errors %}
+                    <ul>
+                        {% for error in form.last_name.errors %}
+                            <li class="errores">{{error}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
                 </div>
-                {% if form.last_name.errors %}
-                <ul>
-                    {% for error in form.last_name.errors %}
-                        <li class="errores">{{error}}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </div>
-            <div class="opciones">
-                <label for="{{f.id_for_label}}">Correo</label>
-                <div class="form-warp">
-                    {{form.email}}
+                <div class="opciones">
+                    <label for="{{f.id_for_label}}">Correo</label>
+                    <div class="form-warp">
+                        {{form.email}}
+                    </div>
+                    {% if form.email.errors %}
+                    <ul>
+                        {% for error in form.email.errors %}
+                            <li class="errores">{{error}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
                 </div>
-                {% if form.email.errors %}
-                <ul>
-                    {% for error in form.email.errors %}
-                        <li class="errores">{{error}}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </div>
-            <div class="opciones">
-                <label for="{{f.id_for_label}}">Contraseña</label>
-                <div class="form-warp">
-                    {{form.password1}}
+                <div class="opciones">
+                    <label for="{{f.id_for_label}}">Contraseña</label>
+                    <div class="form-warp">
+                        {{form.password1}}
+                    </div>
+                    {% if form.password1.errors %}
+                    <ul>
+                        {% for error in form.password1.errors %}
+                            <li class="errores">{{error|escape}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
                 </div>
-                {% if form.password1.errors %}
-                <ul>
-                    {% for error in form.password1.errors %}
-                        <li class="errores">{{error|escape}}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </div>
-            <div class="opciones">
-                <label for="{{f.id_for_label}}">Confirmacion contraseña</label>
-                <div class="form-warp">
-                    {{form.password2}}
+                <div class="opciones">
+                    <label for="{{f.id_for_label}}">Confirmacion contraseña</label>
+                    <div class="form-warp">
+                        {{form.password2}}
+                    </div>
+                    {% if form.password2.errors %}
+                    <ul>
+                        {% for error in form.password2.errors %}
+                            <li class="errores">{{error|escape}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
                 </div>
-                {% if form.password2.errors %}
-                <ul>
-                    {% for error in form.password2.errors %}
-                        <li class="errores">{{error|escape}}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </div>
-            {{ form.as_p }}
-        <button type="submit">Create</button>
-        </form>
-    </section>
+                <a href="#">
+                    Create
+                    <!-- <button type="submit">Create</button> -->
+                </a>
+            </form>
+        </section> 
+    </div>
 </body>
 </html>
