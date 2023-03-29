@@ -110,6 +110,55 @@ header.sticky{
     display: none;
 }
 
+/* Menu en desktop*/
+.desktop-menu {
+    position: absolute; /*No respeta orden, va relative más cercano*/
+    top:-1000px;
+    right: 51px;
+    background: var(--other-color);
+    width: 100px;
+    height: auto;
+    border-radius: 6px;
+    padding: 20px 20px 0 20px;
+    transition: all .50s ease;
+}
+.desktop-menu.open{
+    top: 68px; /*Queda en todo el borde, tamaño del nav*/
+    right: 51px;
+}
+.desktop-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.desktop-menu ul li {
+    text-align: end;
+    transition: all .50s ease;
+}
+
+.desktop-menu ul li:hover {
+    color: var(--main-color);
+}
+
+.desktop-menu ul li:nth-child(1),
+.desktop-menu ul li:nth-child(2) {
+    font-weight: bold;
+}
+.desktop-menu ul li:last-child {
+    padding-top: 20px;
+    border-top: 1px solid var(--text-color);
+}
+/* .desktop-menu ul li:last-child a {
+    color: var(--text-color);
+    font-size: var(--p-font);
+} */
+.desktop-menu ul li a {
+    color: var(--back);
+    text-decoration: none;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
 /* Home */
 section{
     padding: 70px 14% 60px;

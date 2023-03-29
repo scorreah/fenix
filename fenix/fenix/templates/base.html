@@ -37,9 +37,22 @@
         </ul>
 
         <div class="nav-icons">
-            <a href="#"><i class='bx bxs-user-account'></i></a>
+            <a href="#" id="account-icon"><i class='bx bxs-user-account'></i></a>
             <a href="#"><i class='bx bx-search-alt-2'></i></a>
             <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+        <div class="desktop-menu">
+            <ul>
+                <li>
+                    <a href="#" class="title">My orders</a>
+                </li>
+                <li>
+                    <a href="#">My account</a>
+                </li>
+                <li>
+                    <a href="#">Sign out</a>
+                </li>
+                </ul>
         </div>
     </header>
 
@@ -100,6 +113,7 @@
 <!-- link to js -->
 <!-- <script src="js/script.js"></script> -->
 <script src="{% static 'js/side.js' %}"></script>
+<script src="{% static 'js/menu.js' %}"></script>
 </body>
 
 </html>

@@ -27,4 +27,4 @@ const sr = ScrollReveal({
 sr.reveal('.home-text', {delay:300});
 sr.reveal('.home-img', {delay:400});
 sr.reveal('.container', {delay:400});
-sr.reveal('.effect',{delay:300});
+sr.reveal('.effect', {delay:400});
