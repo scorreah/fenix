@@ -31,9 +31,6 @@
         <ul class="navlist">
             <li><a href="{% url 'home' %}" class="active">Home</a></li>
             <li><a href="{% url 'projects' %}">Proyectos</a></li>
-            <!-- <li><a href="#shop">Ciencia</a></li>
-            <li><a href="#review">Tecnología</a></li>
-            <li><a href="#contact">Cocina</a></li> -->
         </ul>
 
         <div class="nav-icons">
@@ -43,15 +40,25 @@
         </div>
         <div class="desktop-menu">
             <ul>
+                {% if user.is_authenticated %}
                 <li>
-                    <a href="#" class="title">My orders</a>
+                    <a href="#" class="title">{{ user.username }}</a>
                 </li>
                 <li>
-                    <a href="#">My account</a>
+                    <a href="{% url 'user.logout' %}" class="title">logout</a>
+                </li>
+
+                {% else %}
+                <li>
+                    <a href="{% url 'user.login' %}">Login</a>
                 </li>
                 <li>
-                    <a href="#">Sign out</a>
+                    <a href="{% url 'investor.singup' %}">Be an Investor</a>
                 </li>
+                <li>
+                    <a href="{% url 'project_owner.singup' %}">Be an Owner</a>
+                </li>
+                {% endif %}
                 </ul>
         </div>
     </header>

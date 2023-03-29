@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def logoutaccount(request):        
     logout(request)
-    return redirect('user.login')
+    return redirect('home')
 
 def loginaccount(request):    
     if request.method == 'GET':
