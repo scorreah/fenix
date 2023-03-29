@@ -10,8 +10,9 @@
     <h1>Proyectos</h1>
 </section>
 
-<section class="articles">
-    {% for project in projects %}
+<div class="effect">
+    <section class="articles">
+        {% for project in projects %}
         {% if project.is_approved != 0 %}
         <article>
             <div class="article-wrapper">
@@ -23,7 +24,7 @@
                     <p>
                         {{ project.description }}
                     </p>
-                    <a href="#" class="read-more">
+                    <a href="{% url 'projects.detail' project.id %}" class="read-more">
                         Read more <span class="sr-only">about this is some project</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd"
@@ -35,6 +36,8 @@
             </div>
         </article>
         {% endif %}
-    {% endfor %}
-</section>
+        {% endfor %}
+    </section>
+</div>
+
 {% endblock content %}

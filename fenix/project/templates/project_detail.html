@@ -1,4 +1,16 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-
+<section class="home" id="home">
+    <div class="home-text">
+        <h1>{{ project.title }} </h1>
+        <p>{{ project.description }}</p>
+        <a href="{% url 'projects' %}" class="btn">Invierta ya <i class='bx bxs-right-arrow' ></i></a>
+        <a href="#" class="btn2"> ${{ project.goal_amount }} <i class='bx bx-money-withdraw'></i></a>
+    </div>
+    
+    <div class="home-img">
+        <img src="{{ project.image.url }}" alt="">
+    </div>
+</section>
 {% endblock content %}

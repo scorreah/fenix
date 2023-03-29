@@ -137,6 +137,10 @@ section{
     margin-bottom: 3rem;
 }
 
+.home-text p{
+    padding-bottom: 10px;
+}
+
 span{
     color: var(--main-color);
 }
