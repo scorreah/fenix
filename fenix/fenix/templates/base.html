@@ -26,14 +26,14 @@
 
     <!-- header -->
     <header>
-        <a href="#" class="logo"><i class='bx bxs-home'></i></box-icon>Fenix</a>
+        <a href="{% url 'home' %}" class="logo"><i class='bx bxs-home'></i></box-icon>Fenix</a>
 
         <ul class="navlist">
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#about">Arte</a></li>
-            <li><a href="#shop">Ciencia</a></li>
+            <li><a href="{% url 'home' %}" class="active">Home</a></li>
+            <li><a href="{% url 'projects' %}">Proyectos</a></li>
+            <!-- <li><a href="#shop">Ciencia</a></li>
             <li><a href="#review">Tecnología</a></li>
-            <li><a href="#contact">Cocina</a></li>
+            <li><a href="#contact">Cocina</a></li> -->
         </ul>
 
         <div class="nav-icons">
