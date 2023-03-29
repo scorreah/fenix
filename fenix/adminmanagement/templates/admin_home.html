@@ -1,36 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <title>Document</title>
-</head>
-<body>
-  <div class="cotainer m-auto">
-    <div class="row">
-        {% for project in projects %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" tyoe="text/css" href="{% static 'css/cards.css' %}">
+{% endblock head %}
+
+{% block content %}
+<section class="project-title">
+    <h1>Projects</h1>
+</section>
+
+<section class="articles">
+    {% for project in projects %}
         {% if project.is_approved != 1 %}
-            <div class="col-sm-3">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">{{ project.title }}</h5>
-                  <p class="card-text">{{ project.user_owner }}</p>
-                  <p class="card-text">{{ project.description }}</p>
-                  <p class="card-text">The goal amount is: {{ project.goal_amount }}</p>
-                  <div>
-                    <form method="post" action="{% url 'accept' project.id %}">
-                      {% csrf_token %}
-                      <input type="submit" value="Approve" class="btn btn-success">
-                    </form>
-                  </div>
+        <article>
+            <div class="article-wrapper">
+                <figure>
+                    <img src="{{ project.image.url }}" alt="" />
+                </figure>
+                <div class="article-body">
+                    <h2>{{ project.title }}</h2>
+                    <p>
+                        {{ project.description }}
+                    </p>
                 </div>
-              </div>
+                <div>
+                  <form method="post" action="{% url 'accept' project.id %}">
+                    {% csrf_token %}
+                    <input type="submit" value="Approve" class="btn">
+                  </form>
+                </div>
             </div>
+        </article>
         {% endif %}
-        {% endfor %}
-    </div>
-  </div>
-</body>
-</html>
+    {% endfor %}
+</section>
+{% endblock content %}

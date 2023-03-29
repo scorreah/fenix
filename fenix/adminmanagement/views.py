@@ -19,8 +19,3 @@ def accept(request,project_id):
         return render(request,'admin_home.html',{'projects': projects})
     else:
         return render(request,'unauthorized.html')
-
-def detail(request, project_id):
-    project = get_object_or_404(Project,pk=project_id)
-    return render(request, 'project_detail.html', 
-                  {'project':project})
