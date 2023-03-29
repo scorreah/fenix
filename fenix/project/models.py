@@ -13,10 +13,23 @@ class Project(models.Model):
     image = models.ImageField(upload_to='project/images/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    owner = models.ForeignKey(ProjectOwner, blank = False, null = False, on_delete=models.CASCADE)
-    
+    owner = models.ForeignKey(ProjectOwner, blank = False, null = False, on_delete=models.CASCADE)    
+    is_approved = models.BooleanField(default=False)
+
     def __str__(self):
         return self.title
+
+    def get_is_approved(self):
+        return self.is_approved
+    
+    def get_title(self):
+        return self.title
+    
+    def get_description(self):
+        return self.description
+    
+    def get_goal_amount(self):
+        return self.goal_amount
 
     class Meta:
         verbose_name = 'Project'
