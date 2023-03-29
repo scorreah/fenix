@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,29 +6,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
 </head>
 <body>
-<div class="card mb-3">
-  <div class="row g-0">
-    <div>
-      <div class="card-body">
-        <h5 class="card-title">Login</h5>
-        {% if error %}
-        <div class="alert alert-danger mt-3" role="alert">
-          {{ error }}
-        </div>
-        {% endif %}
-        <p class="card-text">
-          <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">
-                Login
-            </button>
-          </form>
-        </p>
-      </div>
+    <div class="homebox">
+        <section class="home" id="home">
+            <h2>Login</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="opciones">
+                    <label for="{{ f.id_for_label }}"></label>
+                    <div class="form-warp">
+                        {{form.username}}
+                    </div>
+                    {% if form.username.errors %}
+                    <ul>
+                        {% for error in form.username.errors %}
+                            <li class="errores">{{error}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="opciones">
+                    <label for="{{f.id_for_label}}"></label>
+                    <div class="form-warp">
+                        {{form.password}}
+                    </div>
+                    {% if form.password1.errors %}
+                    <ul>
+                        {% for error in form.password.errors %}
+                            <li class="errores">{{error|escape}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </section> 
     </div>
-  </div>
-</div>
 </body>
+</html>

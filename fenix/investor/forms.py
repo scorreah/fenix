@@ -26,7 +26,13 @@ class InvestorCreationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username','first_name', 'last_name','email', 'password1', 'password2']
-    
+        widgets = {'email':forms.EmailInput(
+            attrs={'placeholder': 'Email...',
+            }),
+            'first_name':forms.TextInput(attrs={'placeholder': 'Name...'}),
+            'last_name':forms.TextInput(attrs={'placeholder':'Last name...'}),
+            'username':forms.TextInput(attrs={'placeholder': 'Username...'}),
+        }   
     def clean_username(self):
         username = self.cleaned_data["username"]
         if User.objects.filter(username = username).exists():

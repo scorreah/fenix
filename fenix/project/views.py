@@ -27,6 +27,8 @@ def create_project(request):
         form = FormProject(request.POST)
         if form.is_valid():
             form.create(project_owner)
+            projects = Project.objects.all()
+            return render(request, 'project_home.html', {'projects':projects})
     else:
         form = FormProject()
     return render(request, 'project_create.html', {'form':form})
