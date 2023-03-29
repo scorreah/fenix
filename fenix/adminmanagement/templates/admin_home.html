@@ -8,20 +8,29 @@
     <title>Document</title>
 </head>
 <body>
+  <div class="cotainer m-auto">
     <div class="row">
         {% for project in projects %}
-            {% if (!project.get_is_approved)  %}
-            <div class="col-sm-6">
+        {% if project.is_approved != 1 %}
+            <div class="col-sm-3">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">{{ project.get_title() }}</h5>
-                  <p class="card-text">{{ project.get_description() }}</p>
-                  <p class="card-text">The goal amount is: {{ project.get_goal_amount }}</p>
+                  <h5 class="card-title">{{ project.title }}</h5>
+                  <p class="card-text">{{ project.user_owner }}</p>
+                  <p class="card-text">{{ project.description }}</p>
+                  <p class="card-text">The goal amount is: {{ project.goal_amount }}</p>
+                  <div>
+                    <form method="post" action="{% url 'accept' project.id %}">
+                      {% csrf_token %}
+                      <input type="submit" value="Approve" class="btn btn-success">
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
-            {% endif  %}
+        {% endif %}
         {% endfor %}
     </div>
+  </div>
 </body>
 </html>
