@@ -16,7 +16,7 @@ class FormProject(forms.Form):
 
     def clean_goal_amount(self):
         goal_amount = self.cleaned_data['goal_amount']
-        if goal_amount<0:
+        if goal_amount<=0:
             raise forms.ValidationError('The goal amount must be greater than zero')
         return goal_amount
 
