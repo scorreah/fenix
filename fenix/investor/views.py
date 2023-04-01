@@ -9,7 +9,7 @@ def create_investor(request):
             form.save()
             
             # redirect to success page
-        return redirect('home')
+            return redirect('home')
     else:
         form = InvestorCreationForm()
     return render(request, 'create_investor.html', {'form': form})

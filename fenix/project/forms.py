@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import Group
+from .models import Project
 
 from .models import Project
 
@@ -25,6 +26,15 @@ class FormProject(forms.Form):
         if end_date<self.cleaned_data['start_date']:
             raise forms.ValidationError('The end date must be greater than the start date')
         return end_date
+    
+    def clean_title(self):
+        title = self.cleaned_data['title']
+        projects_with_title = Project.objects.filter(title=title)
+
+        if projects_with_title.exists():
+            raise forms.ValidationError("Already exist a project with this title.")
+        else:
+            return title
     
     def create(self, user_owner):
         data_clean = self.cleaned_data
