@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from .forms import ProjectOwnerCreationForm
+from django.shortcuts import redirect
+
 
 def create_project_owner(request):
     if request.method == 'POST':
         form = ProjectOwnerCreationForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('home')
             # redirect to success page
     else:
         form = ProjectOwnerCreationForm()

@@ -31,6 +31,9 @@
         <ul class="navlist">
             <li><a href="{% url 'home' %}" class="active">Home</a></li>
             <li><a href="{% url 'projects' %}">Proyectos</a></li>
+            {% if user.user_project_owner %}
+            <li><a href="{% url 'projects.create_project' %}">Publicar proyecto</a></li>
+            {% endif %}
         </ul>
 
         <div class="nav-icons">
