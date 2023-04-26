@@ -28,7 +28,7 @@ class FormProject(forms.Form):
     title = forms.CharField(label='title', required =True, widget=forms.TextInput(attrs={'placeholder':'Enter the project title...'}))
     description = forms.CharField(label='description',required=True, widget=forms.TextInput(attrs={'placeholder':'Enter the project description...'}))
     goal_amount = forms.IntegerField(label='goal_amount',required=True, widget=forms.NumberInput(attrs={'placeholder':'Enter the goal amount..'}))
-    category = forms.ChoiceField(label='category',required=True, choices=CATEGORY_CHOICES, initial=DEFAULT)
+    category = forms.ChoiceField(label='category',required=True, choices=CATEGORY_CHOICES, initial=None)
     start_date = forms.DateField(label='start_date', required=True, widget=DateInput)
     end_date = forms.DateField(label='end_date', required=True, widget=DateInput)
     image = forms.ImageField(label='image')
