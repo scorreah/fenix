@@ -4,6 +4,21 @@ from projectowner.models import ProjectOwner
 from investor.models import Investor
 #hola
 class Project(models.Model):
+    TECHNOLOGY = 'TEC'
+    SCIENCE = 'SCI'
+    ART = 'ART'
+    READING = 'REA'
+    HEALTH = 'HEA'
+    MUSIC = 'MUS'
+    CATEGORY_CHOICES = [
+        (TECHNOLOGY, 'Tecnología'),
+        (SCIENCE, 'Ciencia'),
+        (ART, 'Arte'),
+        (READING, 'Lectura'),
+        (HEALTH, 'Salud'),
+        (MUSIC, 'Música'),
+    ]
+
     title = models.CharField(max_length=255)
     description = models.TextField()
     goal_amount = models.DecimalField(max_digits=10, decimal_places=2)
@@ -15,6 +30,7 @@ class Project(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     owner = models.ForeignKey(ProjectOwner, blank = False, null = False, on_delete=models.CASCADE)    
     is_approved = models.BooleanField(default=False)
+    category = models.CharField(max_length=3, choices=CATEGORY_CHOICES)
 
     def __str__(self):
         return self.title
