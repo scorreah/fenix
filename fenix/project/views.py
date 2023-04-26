@@ -54,3 +54,10 @@ def create_project(request):
     else:
         form = FormProject()
     return render(request, 'project_create.html', {'form':form})
+
+def myprojects(request):
+    projects = Project.objects.filter(project_owner=request.user)
+    context = {
+        'projects': projects
+    }
+    return render(request, 'myprojects.html', context)
