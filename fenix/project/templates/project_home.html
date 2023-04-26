@@ -7,7 +7,20 @@
 
 {% block content %}
 <section class="project-title">
-    <h1>Proyectos</h1>
+    <h1>Proyecto</h1>
+    <form method="GET">
+        <label for="category">Select a category:</label>
+        <select name="category" id="category">
+            <option value="">Todas las categorías</option>
+            <option value="TEC">Tecnología</option>
+            <option value="SCI">Ciencia</option>
+            <option value="ART">Arte</option>
+            <option value="REA">Lectura</option>
+            <option value="HEA">Salud</option>
+            <option value="MUS">Música</option>
+        </select>
+        <button type="submit">Filter</button>
+    </form>
 </section>
 
 <div class="effect">
