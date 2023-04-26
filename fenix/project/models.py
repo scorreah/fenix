@@ -2,7 +2,7 @@
 from django.db import models
 from projectowner.models import ProjectOwner
 from investor.models import Investor
-#hola
+#hola como estas
 class Project(models.Model):
     TECHNOLOGY = 'TEC'
     SCIENCE = 'SCI'
