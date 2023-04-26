@@ -1,6 +1,7 @@
 
 from django.db import models
 from projectowner.models import ProjectOwner
+from investor.models import Investing
 
 class Project(models.Model):
     DEFAULT = 'NON'
@@ -47,6 +48,11 @@ class Project(models.Model):
 
     def get_goal_amount(self):
         return self.goal_amount
+    
+    def my_investors(self):
+        investments = Investing.objects.filter(project=self.id)
+        investors = [i.investor for i in investments]
+        return investors
 
     class Meta:
         verbose_name = 'Project'

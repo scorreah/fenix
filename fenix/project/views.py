@@ -56,8 +56,17 @@ def create_project(request):
     return render(request, 'project_create.html', {'form':form})
 
 def myprojects(request):
-    projects = Project.objects.filter(project_owner=request.user)
-    context = {
-        'projects': projects
-    }
-    return render(request, 'myprojects.html', context)
+    user = User.objects.get(username =request.user)
+    if (user.user_project_owner == True):
+        project_owner = ProjectOwner.objects.get(user=request.user)
+        # Filtrar los proyectos por la instancia del modelo ProjectOwner
+        projects = Project.objects.filter(owner=project_owner)
+        return render(request, 'my_projects.html', {'projects': projects})
+    else:
+        return redirect('projects')
+    
+def myinvestors(request, project_id):
+    project = Project.objects.get(id=project_id)
+    investors = project.my_investors()
+    return render(request, 'investor_details.html', {'investors': investors})
+    

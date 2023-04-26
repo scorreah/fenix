@@ -1,6 +1,6 @@
 from django.db import models
 from accounts.models import User
-from project.models import Project
+# from project.models import Project
 
 class Investor(models.Model):
 

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" tyoe="text/css" href="{% static 'css/cards.css' %}">
+{% endblock head %}
+
+{% block content %}
+<section class="project-title">
+    <h1>Tus proyectos</h1>
+    <form method="GET">
+        <label for="category">Selecciona una categoría:</label>
+        <select name="category" id="category">
+            <option value="">Todas las categorías</option>
+            <option value="TEC">Tecnología</option>
+            <option value="SCI">Ciencia</option>
+            <option value="ART">Arte</option>
+            <option value="REA">Lectura</option>
+            <option value="HEA">Salud</option>
+            <option value="MUS">Música</option>
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+</section>
+
+<div class="effect">
+    <section class="articles">
+        {% for project in projects %}
+        <article>
+            <div class="article-wrapper">
+                <figure>
+                    <img src="{{ project.image.url }}" alt="" />
+                </figure>
+                <div class="article-body">
+                    <h2>{{ project.title }}</h2>
+                    <p>
+                        {{ project.description }}
+                    </p>
+                    <a href="{% url 'projects.my_investors' project.id %}" class="read-more">
+                        Ver inversionistas <span class="sr-only">about this is some project</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    </section>
+</div>
+
+{% endblock content %}

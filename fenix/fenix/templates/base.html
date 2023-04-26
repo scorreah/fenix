@@ -33,6 +33,10 @@
             <li><a href="{% url 'projects' %}">Proyectos</a></li>
             {% if user.user_project_owner %}
             <li><a href="{% url 'projects.create_project' %}">Publicar proyecto</a></li>
+            <li><a href="{% url 'projects.my_projects' %}">Mis proyecto</a></li>
+            {% endif %}
+            {% if user.is_staff %}
+                <li><a href="{% url 'admin_projects.index' %}">Proyectos solicitados</a></li>
             {% endif %}
         </ul>
 
