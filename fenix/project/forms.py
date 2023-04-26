@@ -89,17 +89,20 @@ class DoInvestmentForm(forms.Form):
             raise forms.ValidationError('The amount must be greater than zero')
         return amount
     
-    def save(self, investor, project):
+    def save(self, investor, project_id):
         investor = Investor.objects.get(user=investor)
         data_clean = self.cleaned_data
         if investor.balance - data_clean['amount']<0:
             return False     
         investor.balance = investor.balance - data_clean['amount']
         investor.save()  
+        project = Project.objects.get(id=project_id)
+        project.current_amount += data_clean['amount']
+        project.save()
         data_clean = self.cleaned_data
         data = {
             'investor': investor,
             'amount' : data_clean['amount'],
-            'project' : project
+            'project' : project_id
         }
         Investing.objects.create(**data)
