@@ -56,6 +56,19 @@
                 <div class="opciones">
                     <label for="{{f.id_for_label}}"></label>
                     <div class="form-warp">
+                        {{form.category}}
+                    </div>
+                    {% if form.category.errors %}
+                    <ul>
+                        {% for error in form.category.errors %}
+                            <li class="errores">{{error}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="opciones">
+                    <label for="{{f.id_for_label}}"></label>
+                    <div class="form-warp">
                         {{form.start_date}}
                     </div>
                     {% if form.start_date.errors %}
