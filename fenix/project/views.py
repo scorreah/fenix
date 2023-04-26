@@ -2,8 +2,10 @@ from django.shortcuts import render
 from .models import Project
 from accounts.models import User
 from projectowner.models import ProjectOwner
-from .forms import FormProject
+from .forms import FormProject, DoInvestmentForm
 from django.shortcuts import get_object_or_404, redirect
+from django.contrib import messages
+
 
 def home(request):
     projects = Project.objects.all()
@@ -20,8 +22,23 @@ def home(request):
 
 def detail(request, project_id):
     project = get_object_or_404(Project,pk=project_id)
-    return render(request, 'project_detail.html', 
-                {'project':project})
+    if request.method == 'POST':
+        form = DoInvestmentForm(request.POST)
+        if form.is_valid():
+            if request.user.user_investor:
+                investor = User.objects.get(username = request.user)
+                if form.save(investor, project_id):
+                    messages.success(request, "La inversion ha sido realizada con exito")
+                else:
+                    messages.error(request, "No tienes fondos suficientes")
+            else:
+                messages.error(request, "El usuario no es un inversor")
+        return render(request, 'project_detail.html', 
+                  {'form': form, 'project':project, 'project_id':project_id})
+    else:
+        form = DoInvestmentForm()
+        return render(request, 'project_detail.html', 
+                  {'form': form, 'project':project, 'project_id':project_id})
 
 def create_project(request):
     user = User.objects.get(username =request.user)

@@ -7,6 +7,25 @@
         <p>{{ project.description }}</p>
         <a href="{% url 'projects' %}" class="btn">Invierta ya <i class='bx bxs-right-arrow' ></i></a>
         <a href="#" class="btn2"> ${{ project.goal_amount }} <i class='bx bx-money-withdraw'></i></a>
+        
+        <form method="post">
+            {% csrf_token %}
+            <div class="opciones">
+                <label for="{{ f.id_for_label }}"></label>
+                <div class="form-warp">
+                    {{form.amount}}
+                </div>
+                {% if form.amount.errors %}
+                <ul>
+                    {% for error in form.amount.errors %}
+                        <li class="errores">{{error}}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn" href="{% url 'projects.detail' project_id %}">Create<i class='bx bxs-right-arrow' ></i></button>
+        </form>
+        
     </div>
     
     <div class="home-img">

@@ -1,8 +1,7 @@
 
 from django.db import models
 from projectowner.models import ProjectOwner
-from investor.models import Investor
-#hola como estas
+
 class Project(models.Model):
     DEFAULT = 'NON'
     TECHNOLOGY = 'TEC'

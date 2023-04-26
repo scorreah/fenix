@@ -1,6 +1,8 @@
 from django.shortcuts import render,  redirect
 from .forms import InvestorCreationForm
 from django.contrib.auth import authenticate, login
+from django.contrib import messages
+from accounts.models import User
 
 def create_investor(request):
     if request.method == 'POST':
@@ -13,7 +15,6 @@ def create_investor(request):
             user = authenticate(username=username, password=raw_password)
             login(request, user)
             return redirect('home')
-            # redirect to success page
     else:
         form = InvestorCreationForm()
     return render(request, 'create_investor.html', {'form': form})

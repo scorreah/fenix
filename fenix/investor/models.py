@@ -1,5 +1,6 @@
 from django.db import models
 from accounts.models import User
+from project.models import Project
 
 class Investor(models.Model):
 
@@ -9,3 +10,8 @@ class Investor(models.Model):
     class Meta:
         verbose_name = 'Investor'
         verbose_name_plural = 'Investors'
+
+class Investing(models.Model):
+    investor = models.ForeignKey(Investor, on_delete=models.CASCADE)
+    amount = models.IntegerField()
+    project = models.IntegerField()
