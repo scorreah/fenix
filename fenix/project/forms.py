@@ -1,6 +1,9 @@
 from django import forms
 from django.contrib.auth.models import Group
 from .models import Project
+from investor.models import Investor
+from accounts.models import User
+from investor.models import Investing
 
 from .models import Project
 
@@ -49,3 +52,27 @@ class FormProject(forms.Form):
             'owner' : user_owner
         }
         Project.objects.create(**data)
+
+class DoInvestmentForm(forms.Form):
+    amount = forms.IntegerField(label='amount',required=True, widget=forms.NumberInput(attrs={'placeholder':'Enter the amount..'}))
+
+    def clean_amount(self):
+        amount = self.cleaned_data['amount']
+        if amount<=0:
+            raise forms.ValidationError('The amount must be greater than zero')
+        return amount
+    
+    def save(self, investor, project):
+        investor = Investor.objects.get(user=investor)
+        data_clean = self.cleaned_data
+        if investor.balance - data_clean['amount']<0:
+            return False     
+        investor.balance = investor.balance - data_clean['amount']
+        investor.save()  
+        data_clean = self.cleaned_data
+        data = {
+            'investor': investor,
+            'amount' : data_clean['amount'],
+            'project' : project
+        }
+        Investing.objects.create(**data)

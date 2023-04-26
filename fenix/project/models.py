@@ -1,7 +1,6 @@
 
 from django.db import models
 from projectowner.models import ProjectOwner
-from investor.models import Investor
 
 class Project(models.Model):
     title = models.CharField(max_length=255)
