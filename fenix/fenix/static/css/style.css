@@ -116,7 +116,7 @@ header.sticky{
     top:-1000px;
     right: 51px;
     background: var(--other-color);
-    width: 100px;
+    width: 150px;
     height: auto;
     border-radius: 6px;
     padding: 20px 20px 0 20px;
@@ -141,9 +141,12 @@ header.sticky{
 }
 
 .desktop-menu ul li:nth-child(1),
-.desktop-menu ul li:nth-child(2) {
+.desktop-menu ul li:nth-child(2),
+.desktop-menu ul li:nth-child(3)
+{
     font-weight: bold;
 }
+
 .desktop-menu ul li:last-child {
     padding-top: 20px;
     border-top: 1px solid var(--text-color);
