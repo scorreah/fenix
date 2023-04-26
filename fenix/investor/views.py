@@ -14,7 +14,6 @@ def create_investor(request):
             login(request, user)
             return redirect('home')
             # redirect to success page
-            return redirect('home')
     else:
         form = InvestorCreationForm()
     return render(request, 'create_investor.html', {'form': form})

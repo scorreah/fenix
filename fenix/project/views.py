@@ -6,16 +6,22 @@ from .forms import FormProject
 from django.shortcuts import get_object_or_404, redirect
 
 def home(request):
-    searchTerm = request.GET.get('searchMovie')
     projects = Project.objects.all()
+    category = request.GET.get('category')
+    # Verificar si se ha enviado el formulario de filtro
+    if category:
+        # Filtrar los proyectos según la categoría seleccionada
+        
+        projects = projects.filter(category=category)
+
     return render(request, 'project_home.html',
-      {'searchTerm':searchTerm, 'projects': projects})
+    {'projects': projects, 'category':category})
 
 
 def detail(request, project_id):
     project = get_object_or_404(Project,pk=project_id)
     return render(request, 'project_detail.html', 
-                  {'project':project})
+                {'project':project})
 
 def create_project(request):
     user = User.objects.get(username =request.user)
