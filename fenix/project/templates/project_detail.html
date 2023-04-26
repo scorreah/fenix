@@ -5,8 +5,8 @@
     <div class="home-text">
         <h1>{{ project.title }} </h1>
         <p>{{ project.description }}</p>
-        <a href="{% url 'projects' %}" class="btn">Invierta ya <i class='bx bxs-right-arrow' ></i></a>
-        <a href="#" class="btn2"> ${{ project.goal_amount }} <i class='bx bx-money-withdraw'></i></a>
+        <!-- <a href="{% url 'projects' %}" class="btn">Invierta ya <i class='bx bxs-right-arrow' ></i></a> -->
+        <a href="#" class="btn2"> ${{ project.current_amount }} <i class='bx bx-money-withdraw'></i></a>
         
         <form method="post">
             {% csrf_token %}
@@ -23,7 +23,7 @@
                 </ul>
                 {% endif %}
             </div>
-            <button type="submit" class="btn" href="{% url 'projects.detail' project_id %}">Create<i class='bx bxs-right-arrow' ></i></button>
+            <button type="submit" class="" href="{% url 'projects.detail' project_id %}">Patrocinar<i class='bx bxs-right-arrow' ></i></button>
         </form>
         
     </div>

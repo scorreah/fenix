@@ -27,8 +27,7 @@ def detail(request, project_id):
                     messages.error(request, "No tienes fondos suficientes")
             else:
                 messages.error(request, "El usuario no es un inversor")
-        return render(request, 'project_detail.html', 
-                  {'form': form, 'project':project, 'project_id':project_id})
+        return redirect('projects')
     else:
         form = DoInvestmentForm()
         return render(request, 'project_detail.html', 
