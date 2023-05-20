@@ -29,10 +29,9 @@ def myinvestments(request):
         investor_user = Investor.objects.get(user=request.user)
         investments = Investing.objects.filter(investor=investor_user.id)
         projects = []
-        for invest in investments:
-            verification_element = Project.objects.get(id=invest.project)
-            if verification_element not in projects:
-                projects.append(verification_element)
+        for i in investments:
+            invest = {'project':Project.objects.get(id=i.project),'amount':i.amount}
+            projects.append(invest)
         return render(request,'my_investments.html',{'projects':projects})
     else:
         return redirect('projects')
