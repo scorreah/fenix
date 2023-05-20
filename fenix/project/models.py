@@ -3,6 +3,7 @@ from django.db import models
 from projectowner.models import ProjectOwner
 from investor.models import Investing
 from django.utils import timezone
+from investor.models import Investor
 
 class Project(models.Model):
     DEFAULT = 'NON'

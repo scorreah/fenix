@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" tyoe="text/css" href="{% static 'css/cards.css' %}">
+{% endblock head %}
+
+{% block content %}
+<section class="project-title">
+    <h1>Tus inversiones</h1>
+</section>
+<div class="effect">
+    <section class="articles">
+        {% for project in  projects %}
+        <article>
+            <div class="article-wrapper">
+                <figure>
+                    <img src="{{ project.image.url }}" alt="" />
+                </figure>
+                <div class="article-body">
+                    <h2>{{ project.title }}</h2>
+                    <p>
+                        {{ project.description }}
+                    </p>
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    </section>
+</div>
+
+{% endblock content %}
