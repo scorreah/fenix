@@ -32,6 +32,11 @@ def myinvestments(request):
         for i in investments:
             invest = {'project':Project.objects.get(id=i.project),'amount':i.amount}
             projects.append(invest)
+        for i in projects: 
+            for j in projects[1:]:
+                if i['project'] == j['project']:
+                    i['amount'] = i['amount'] + j['amount']
+                    projects.remove(j)
         return render(request,'my_investments.html',{'projects':projects})
     else:
         return redirect('projects')
