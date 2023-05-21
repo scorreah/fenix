@@ -223,7 +223,7 @@ span{
 
 .btn2{
     display: inline-block;
-    margin-left: 30px;
+    /* margin-left: 30px; */
     font-size: var(--p-font);
     font-weight: 500;
     letter-spacing: 1px;
@@ -235,6 +235,25 @@ span{
 .btn2:hover{
     transform: scale(1.1) translate(12px);
 }
+
+.amount {
+    color: var(--main-color);
+    font-size: 24px;
+    text-shadow: 2px 2px 4px var(--main-color);
+}
+
+.sponsor {
+    color: white;
+    font-size: 24px;
+    text-shadow: 2px 2px 4px var(--second-color);
+}
+
+
+.total {
+    color: var(--second-color);
+}
+  
+  
 
 /* Container */
 .container{

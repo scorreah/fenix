@@ -5,10 +5,21 @@
     <div class="home-text">
         <h1>{{ project.title }} </h1>
         <p>{{ project.description }}</p>
-        <!-- <a href="{% url 'projects' %}" class="btn">Invierta ya <i class='bx bxs-right-arrow' ></i></a> -->
-        <a href="#" class="btn2"> ${{ project.current_amount }} <i class='bx bx-money-withdraw'></i></a>
+        <p>
+            <span class="amount">{{ project.current_amount }}$ </span> <span class="total">  contribuidos de {{ project.goal_amount }}$.</span>
+        </p>
+
+        <p>
+            <span class="sponsor">{{ project.count_investments }} </span> <span class="total">  patrocinadores.</span>
+        </p>
+          
+        <p>
+            <span class="sponsor">{{ project.remaining_time }} </span> <span class="total">  días restantes.</span>
+        </p>
+        <!-- <a href="{% url 'projects' %}" class="btn">Patrocinar <i class='bx bxs-right-arrow' ></i></a> -->
+        <a href="#" class="btn2"> Patrocina ahora <i class='bx bx-money-withdraw'></i></a>
         
-        {% if user.user_investor %}
+        <!-- {% if user.user_investor %}
         <form method="post">
             {% csrf_token %}
             <div class="opciones">
@@ -26,7 +37,7 @@
             </div>
             <button type="submit" class="" href="{% url 'projects.detail' project_id %}">Patrocinar<i class='bx bxs-right-arrow' ></i></button>
         </form>
-        {% endif %}
+        {% endif %} -->
         
     </div>
     

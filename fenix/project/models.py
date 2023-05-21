@@ -2,6 +2,7 @@
 from django.db import models
 from projectowner.models import ProjectOwner
 from investor.models import Investing
+from django.utils import timezone
 
 class Project(models.Model):
     DEFAULT = 'NON'
@@ -53,6 +54,18 @@ class Project(models.Model):
         investments = Investing.objects.filter(project=self.id)
         investors = [i.investor for i in investments]
         return investors
+    
+    def count_investments(self):
+        investments = Investing.objects.filter(project=self.id)
+        return investments.count()
+    
+    def remaining_time(self):
+        today = timezone.now().date()
+        remaining_days = (self.end_date - today).days
+        if (remaining_days < 0):
+            return 0
+        else:
+            return remaining_days
 
     class Meta:
         verbose_name = 'Project'
