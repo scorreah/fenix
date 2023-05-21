@@ -22,6 +22,7 @@ def home(request):
 
 def detail(request, project_id):
     project = get_object_or_404(Project,pk=project_id)
+    
     if request.method == 'POST':
         form = DoInvestmentForm(request.POST)
         if form.is_valid():

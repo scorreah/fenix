@@ -28,15 +28,17 @@ def myinvestments(request):
     if (user.user_investor == True):
         investor_user = Investor.objects.get(user=request.user)
         investments = Investing.objects.filter(investor=investor_user.id)
+        repeat_projects = []
         projects = []
         for i in investments:
-            invest = {'project':Project.objects.get(id=i.project),'amount':i.amount}
-            projects.append(invest)
-        for i in projects: 
-            for j in projects[1:]:
-                if i['project'] == j['project']:
+            invest = {'project':Project.objects.get(id=i.project),'amount':i.amount, 'id':i.id}
+            repeat_projects.append(invest)
+        for i in repeat_projects: 
+            for j in repeat_projects[1:]:
+                if i['project'] == j['project'] and i['id'] != j['id']:
                     i['amount'] = i['amount'] + j['amount']
-                    projects.remove(j)
+                    repeat_projects.remove(j)
+            projects.append(i)
         return render(request,'my_investments.html',{'projects':projects})
     else:
         return redirect('projects')
