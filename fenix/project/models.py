@@ -53,7 +53,16 @@ class Project(models.Model):
     
     def my_investors(self):
         investments = Investing.objects.filter(project=self.id)
-        investors = [i.investor for i in investments]
+        # investors = [i.investor for i in investments]
+        investors = []
+        for i in investments:
+            invest = {'investor':i.investor,'amount':i.amount}
+            investors.append(invest)
+        for i in investors:
+            for j in investors[1:]:
+                if i['investor'] == j['investor']:
+                    i['amount'] = i['amount'] + j['amount']
+                    investors.remove(j)
         return investors
     
     def count_investments(self):

@@ -18,9 +18,9 @@
                     <img src="{% static 'images/profile.png' %}" alt="" />
                 </figure>
                 <div class="article-body">
-                    <h2>{{ investor.user }} </h2>
+                    <h2>{{ investor.investor.user }} </h2>
                     <p>
-                        {{ investor.balance }}
+                        Ha invertido: ${{ investor.amount }}
                     </p>
                 </div>
             </div>
