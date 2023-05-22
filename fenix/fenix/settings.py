@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'paypal.standard.ipn',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -149,3 +150,5 @@ MEDIA_URL = '/media/'
 LOGIN_URL = 'loginaccount'
 
 AUTH_USER_MODEL = 'accounts.User'
+PAYPAL_TEST = True
+PAYPAL_RECEIVER_EMAIL = 'sb-pagsg26057443@business.example.com'
