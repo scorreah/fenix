@@ -78,11 +78,6 @@ class Project(models.Model):
             return 0
         else:
             return remaining_days
-    def statistics(self):
-        amount_investments = Investing.objects.filter(project=self.id).count()
-        invested_amount = Investing.objects.filter(project=self.id).aggregate(Sum('amount'))
-        statistics = {'amount_investments':amount_investments,'invested_amount':invested_amount['amount__sum']}
-        return statistics
 
     class Meta:
         verbose_name = 'Project'
