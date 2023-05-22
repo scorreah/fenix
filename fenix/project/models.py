@@ -1,7 +1,9 @@
-
+from django.db.models import Sum
 from django.db import models
 from projectowner.models import ProjectOwner
 from investor.models import Investing
+from django.utils import timezone
+from investor.models import Investor
 
 class Project(models.Model):
     DEFAULT = 'NON'
@@ -51,8 +53,31 @@ class Project(models.Model):
     
     def my_investors(self):
         investments = Investing.objects.filter(project=self.id)
-        investors = [i.investor for i in investments]
+        # investors = [i.investor for i in investments]
+        repeat_investors = []
+        investors= []
+        for i in investments:
+            invest = {'investor':i.investor,'amount':i.amount,'id':i.id}
+            repeat_investors.append(invest)
+        for i in repeat_investors:
+            for j in repeat_investors[1:]:
+                if i['investor'] == j['investor'] and i['id'] != j['id']:
+                    i['amount'] = i['amount'] + j['amount']
+                    repeat_investors.remove(j)
+            investors.append(i)
         return investors
+    
+    def count_investments(self):
+        investments = Investing.objects.filter(project=self.id)
+        return investments.count()
+    
+    def remaining_time(self):
+        today = timezone.now().date()
+        remaining_days = (self.end_date - today).days
+        if (remaining_days < 0):
+            return 0
+        else:
+            return remaining_days
 
     class Meta:
         verbose_name = 'Project'

@@ -9,11 +9,10 @@
     <title>Fenix</title>
     <!-- Base style -->
     <link rel="stylesheet" tyoe="text/css" href="{% static 'css/style.css' %}">
-
+    
     <!-- Inherit style -->
     {% block head %}
     {% endblock head %}
-
     <!-- Box icons -->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <!-- google fonts -->
@@ -31,6 +30,9 @@
         <ul class="navlist">
             <li><a href="{% url 'home' %}" class="active">Home</a></li>
             <li><a href="{% url 'projects' %}">Proyectos</a></li>
+            {% if user.user_investor %}
+            <li><a href="{% url 'investments' %}">Mis patrocinios</a></li>
+            {% endif %}
             {% if user.user_project_owner %}
             <li><a href="{% url 'projects.create_project' %}">Publicar proyecto</a></li>
             <li><a href="{% url 'projects.my_projects' %}">Mis proyecto</a></li>

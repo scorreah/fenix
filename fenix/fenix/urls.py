@@ -23,7 +23,8 @@ urlpatterns = [
     path('', include('home.urls')),
     path('projects/', include('project.urls')),
     path('accounts/', include('accounts.urls')),
-    path('admin-projects/', include('adminmanagement.urls')),
+    path('admin-projects/', include('adminmanagement.urls')),  
+    path('investments/', include('investor.urls')),  
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

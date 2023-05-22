@@ -7,7 +7,6 @@ from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
 from paypal.standard.forms import PayPalPaymentsForm
 
-
 def home(request):
     projects = Project.objects.all()
     category = request.GET.get('category')
@@ -78,4 +77,23 @@ def myinvestors(request, project_id):
     project = Project.objects.get(id=project_id)
     investors = project.my_investors()
     return render(request, 'investor_details.html', {'investors': investors})
+
+def invest(request, project_id):
+    project = get_object_or_404(Project,pk=project_id)
+    if request.method == 'POST':
+        form = DoInvestmentForm(request.POST)
+        if form.is_valid():
+            if request.user.user_investor:
+                investor = User.objects.get(username = request.user)
+                if form.save(investor, project_id):
+                    messages.success(request, "La inversion ha sido realizada con exito")
+                else:
+                    messages.error(request, "No tienes fondos suficientes")
+            else:
+                messages.error(request, "El usuario no es un inversor")
+        return redirect('projects.detail', project_id=project_id)
+    else:
+        form = DoInvestmentForm()
+        return render(request, 'project_invest.html', 
+                  {'form': form, 'project':project, 'project_id':project_id})
     
