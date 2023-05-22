@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Home -->
+<section class="home" id="home">
+    <div class="home-text">
+        <h1><span>Fenix </span> Crea, patrocina e innova </h1>
+        <a href="{% url 'projects' %}" class="btn">Explora <i class='bx bxs-right-arrow' ></i></a>
+        <a href="#" class="btn2">Patrocina ahora</a>
+    </div>
+
+    <div class="home-img">
+        <img src="{% static 'images/fenix.png' %}" alt="">
+    </div>
+    
+</section>
+<!-- container -->
+<section class="container">
+    <div class="container-box">
+        <img src="{% static 'images/USER2.png' %}">
+        <h3>Patrocinadores totales</h3>
+        <a href="#">{{ global_statistics.total_investor }}</a>
+    </div>
+
+    <div class="container-box">
+        <img src="{% static 'images/USER2.png' %}">
+        <h3>Patrocinadores activos</h3>
+        <a href="#">{{ global_statistics.real_investor }}</a>
+    </div>
+
+    <div class="container-box">
+        <img src="{% static 'images/PRICE.png' %}">
+        <h3>Cantidad invertida en toda la pagina</h3>
+        <a href="#">$ {{ global_statistics.global_amount_invested }}</a>
+    </div>
+
+    <div class="container-box">
+        <img src="{% static 'images/PRO.png' %}">
+        <h3>Cantidad de proyectos</h3>
+        <a href="#"> {{ global_statistics.total_projects }}</a>
+    </div>
+
+    <div class="container-box">
+        <img src="{% static 'images/TEC2.png' %}">
+        <h3>Proyectos de tecnologia</h3>
+        <a href="#"> {{ global_statistics.technology_projects }}</a>
+    </div>
+
+    <div class="container-box">
+        <img src="{% static 'images/SC2.png' %}">
+        <h3>Proyectos de ciencia</h3>
+        <a href="#"> {{ global_statistics.science_projects }}</a>
+    </div>
+
+    <div class="container-box">
+        <img src="{% static 'images/AR2.png' %}">
+        <h3>Proyectos de arte</h3>
+        <a href="#"> {{ global_statistics.art_projects }}</a>
+    </div>
+
+    <div class="container-box">
+        <img src="{% static 'images/RE2.png' %}">
+        <h3>Proyectos de lectura</h3>
+        <a href="#"> {{ global_statistics.reading_projects }}</a>
+    </div>
+
+    <div class="container-box">
+        <img src="{% static 'images/HE2.png' %}">
+        <h3>Proyectos de salud</h3>
+        <a href="#"> {{ global_statistics.health_projects }}</a>
+    </div>
+
+    <div class="container-box">
+        <img src="{% static 'images/MU2.png' %}">
+        <h3>Proyectos de musica</h3>
+        <a href="#"> {{ global_statistics.music_projects }}</a>
+    </div>
+    
+
+</section>
+
+<!-- about us -->
+<section class="about" id="about">
+    <div class="about-img">
+        <img src="img/about.png">
+    </div>
+
+    <div class="about-text">
+        <h2>Living well begins <br> with eating well.</h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore quasi veritatis eius soluta, expedita non sit enim saepe debitis atque iusto harum quia dolores distinctio odit asperiores doloribus eveniet fugit.</p>
+        <a href="#" class="btn">Explore Story<i class='bx bxs-right-arrow' ></i></a>
+    </div>
+</section>
+
+{% endblock content %}
