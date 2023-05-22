@@ -6,7 +6,6 @@ from .forms import FormProject, DoInvestmentForm
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
 
-
 def home(request):
     projects = Project.objects.all()
     category = request.GET.get('category')

@@ -7,20 +7,20 @@
 
 {% block content %}
 <section class="project-title">
-    <h1>Tus inversionistas</h1>
+    <h1>Tus patrocinios</h1>
 </section>
 <div class="effect">
     <section class="articles">
-        {% for i in investors %}
+        {% for project in  projects %}
         <article>
             <div class="article-wrapper">
                 <figure>
-                    <img src="{% static 'images/profile.png' %}" alt="" />
+                    <img src="{{ project.project.image.url }}" alt="" />
                 </figure>
                 <div class="article-body">
-                    <h2>{{ i.investor.user }} </h2>
+                    <h2>{{ project.project.title }}</h2>
                     <p>
-                        Ha aportado: ${{ i.amount }}
+                        Patrocinaste: ${{ project.amount }}
                     </p>
                 </div>
             </div>
