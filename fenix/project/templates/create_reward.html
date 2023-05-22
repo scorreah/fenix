@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
+</head>
+<body>
+    <div class="homebox">
+        <section class="home" id="home">
+            <h2>Crea recompensa</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="opciones">
+                    <label for="{{ f.id_for_label }}"></label>
+                    <div class="form-warp">
+                        {{form.name}}
+                    </div>
+                    {% if form.title.errors %}
+                    <ul>
+                        {% for error in form.title.errors %}
+                            <li class="errores">{{error}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="opciones">
+                    <label for="{{f.id_for_label}}"></label>
+                    <div class="form-warp">
+                        {{form.description}}
+                    </div>
+                    {% if form.description.errors %}
+                    <ul>
+                        {% for error in form.description.errors %}
+                            <li class="errores">{{error}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="opciones">
+                    <label for="{{f.id_for_label}}"></label>
+                    <div class="form-warp">
+                        {{form.money_from}}
+                    </div>
+                    {% if form.money_from.errors %}
+                    <ul>
+                        {% for error in form.goal_amount.errors %}
+                            <li class="errores">{{error}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="opciones">
+                    <label for="{{f.id_for_label}}"></label>
+                    <div class="form-warp">
+                        {{form.image}}
+                    </div>
+                    {% if form.image.errors %}
+                    <ul>
+                        {% for error in form.image.errors %}
+                            <li class="errores">{{error|escape}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <button type="submit">Crear</button>
+            </form>
+        </section> 
+    </div>
+</body>
+</html>
