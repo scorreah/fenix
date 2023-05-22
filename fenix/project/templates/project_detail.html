@@ -17,7 +17,7 @@
             <span class="sponsor">{{ project.remaining_time }} </span> <span class="total">  días restantes.</span>
         </p>
         <!-- <a href="{% url 'projects' %}" class="btn">Patrocinar <i class='bx bxs-right-arrow' ></i></a> -->
-        <a href="#" class="btn2"> Patrocina ahora <i class='bx bx-money-withdraw'></i></a>
+        <a href="{% url 'projects.invest' project.id %}" class="btn2"> Patrocina ahora <i class='bx bx-money-withdraw'></i></a>
         
         <!-- {% if user.user_investor %}
         <form method="post">

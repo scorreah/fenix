@@ -334,6 +334,44 @@ span{
     font-size: var(--h2-font);
 }
 
+.price-container{
+    margin: 20px;
+}
+
+.price-box {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid red;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    width: 100%;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    font-size: larger;
+    }
+    
+    .price-box:focus {
+    border-color: var(--main-color);
+    }
+
+    .price-box:focus::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 2px;
+        background-color: yellow;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+      
+      .price-box:focus::after {
+        transform: scaleX(1);
+      }
+    
+
 .shop-content{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, auto));

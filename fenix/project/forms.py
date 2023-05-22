@@ -81,7 +81,7 @@ class FormProject(forms.Form):
         Project.objects.create(**data)
 
 class DoInvestmentForm(forms.Form):
-    amount = forms.IntegerField(label='amount',required=True, widget=forms.NumberInput(attrs={'placeholder':'Enter the amount..'}))
+    amount = forms.IntegerField(label='amount',required=True, widget=forms.NumberInput(attrs={'placeholder':'Ingresa cantidad...', 'class': 'price-box'}))
 
     def clean_amount(self):
         amount = self.cleaned_data['amount']
@@ -99,7 +99,6 @@ class DoInvestmentForm(forms.Form):
         project = Project.objects.get(id=project_id)
         project.current_amount += data_clean['amount']
         project.save()
-        data_clean = self.cleaned_data
         data = {
             'investor': investor,
             'amount' : data_clean['amount'],
