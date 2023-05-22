@@ -26,63 +26,29 @@
             <button type="submit" class="btn">Patrocinar<i class='bx bxs-right-arrow' ></i></button>
         </form>
     </div>
-    <!-- container -->
+    <!-- rewards -->
     <section class="container">
         <div class="main">
             <h2>{{ project.title }} ofrece las siguientes recompensas exclusivas</h2>
             <ul class="cards">
-
+                {% for reward in rewards %}
                 <li class="cards_item">
                     <div class="card" tabindex="0">
                         <div class="card_image"><img
-                                src="https://www.motor.com.co/__export/1677002784764/sites/motor/img/2023/02/21/https___www_carscoops_com_wp-content_uploads_2023_02_lamborghini-aventador-sv-1-1024x682.jpg_554688468.jpg"
+                                src="{{ reward.image.url }}"
                                 alt="A side view of a plate of figs and berries. "></div>
                         <div class="card_content">
-                            <h2 class="card_title">Recompensa a partir de $16</h2>
+                            <h2 class="card_title">Recompensa a partir de ${{ reward.money_from }}</h2>
                             <div class="card_text">
-                                <span class="note">Avetador.</span>
-                                <p>A succulent sextet of fresh figs join with a selection of bodacious seasonal berries
-                                    in this refreshing, shareable dessert.</p>
-                                <p>Choose your drizzle: <strong>cherry-balsamic vinegar, local honey, or housemade
-                                        chocolate sauce.</strong> </p>
+                                <span class="note">{{ reward.name }}.</span>
+                                <p>{{ reward.description }}</p>
+                                
                             </div>
                         </div>
                     </div>
                 </li>
-                <li class="cards_item">
-                    <div class="card" tabindex="0">
-                        <div class="card_image"><img
-                                src="https://photos.tf1.fr/940/531/lamborghini-aventador-sv-roadster-16-8a2e1f-0@1x.jpg"
-                                alt="A side view of a plate of figs and berries. "></div>
-                        <div class="card_content">
-                            <h2 class="card_title">Recompensa a partir de $18</h2>
-                            <div class="card_text">
-                                <span class="note">Urus.</span>
-                                <p>A succulent sextet of fresh figs join with a selection of bodacious seasonal berries
-                                    in this refreshing, shareable dessert.</p>
-                                <p>Choose your drizzle: <strong>cherry-balsamic vinegar, local honey, or housemade
-                                        chocolate sauce.</strong> </p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="cards_item">
-                    <div class="card" tabindex="0">
-                        <div class="card_image"><img
-                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Lamborghini_Aventador_LP_750-4_Super_VELOCE_%2817166321410%29.jpg/1200px-Lamborghini_Aventador_LP_750-4_Super_VELOCE_%2817166321410%29.jpg"
-                                alt="A side view of a plate of figs and berries. "></div>
-                        <div class="card_content">
-                            <h2 class="card_title">Recompensa a partir de $19</h2>
-                            <div class="card_text">
-                                <span class="note">Buggati.</span>
-                                <p>A succulent sextet of fresh figs join with a selection of bodacious seasonal berries
-                                    in this refreshing, shareable dessert.</p>
-                                <p>Choose your drizzle: <strong>cherry-balsamic vinegar, local honey, or housemade
-                                        chocolate sauce.</strong> </p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
+               
+                {% endfor %}
             </ul>
         </div>
     
