@@ -12,6 +12,47 @@
     <div class="home-img">
         <img src="{% static 'images/fenix.png' %}" alt="">
     </div>
+    
+</section>
+<!-- container -->
+<section class="container">
+    <div class="container-box">
+        <img src="img/c1.png">
+        <h3>Patrocinadores totales</h3>
+        <a href="#">{{ global_statistics.total_investor }}</a>
+    </div>
+
+    <div class="container-box">
+        <img src="img/c2.png">
+        <h3>Patrocinadores activos</h3>
+        <a href="#">{{ global_statistics.real_investor }}</a>
+    </div>
+
+    <div class="container-box">
+        <img src="img/c3.png">
+        <h3>Cantidad invertida en toda la pagina</h3>
+        <a href="#">$ {{ global_statistics.global_amount_invested }}</a>
+    </div>
+
+    <div class="container-box">
+        <img src="img/c3.png">
+        <h3>Cantidad de proyectos</h3>
+        <a href="#"> {{ global_statistics.total_projects }}</a>
+    </div>
 
 </section>
+
+<!-- about us -->
+<section class="about" id="about">
+    <div class="about-img">
+        <img src="img/about.png">
+    </div>
+
+    <div class="about-text">
+        <h2>Living well begins <br> with eating well.</h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore quasi veritatis eius soluta, expedita non sit enim saepe debitis atque iusto harum quia dolores distinctio odit asperiores doloribus eveniet fugit.</p>
+        <a href="#" class="btn">Explore Story<i class='bx bxs-right-arrow' ></i></a>
+    </div>
+</section>
+
 {% endblock content %}

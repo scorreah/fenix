@@ -6,7 +6,6 @@ from .forms import FormProject, DoInvestmentForm
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
 
-
 def home(request):
     projects = Project.objects.all()
     category = request.GET.get('category')
@@ -22,7 +21,7 @@ def home(request):
 
 def detail(request, project_id):
     project = get_object_or_404(Project,pk=project_id)
-    
+    statistics = project.statistics()
     if request.method == 'POST':
         form = DoInvestmentForm(request.POST)
         if form.is_valid():
@@ -38,7 +37,7 @@ def detail(request, project_id):
     else:
         form = DoInvestmentForm()
         return render(request, 'project_detail.html', 
-                  {'form': form, 'project':project, 'project_id':project_id})
+                  {'form': form, 'project':project, 'project_id':project_id, 'statistics':statistics})
 
 def create_project(request):
     user = User.objects.get(username =request.user)
