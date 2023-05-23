@@ -4,6 +4,16 @@ from accounts.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 
+class AddBalanceForm(forms.Form):
+    name = forms.CharField(label='name', required =True, widget=forms.TextInput(attrs={'placeholder':'Enter your name...'}))
+    address = forms.CharField(label='address', required =True, widget=forms.TextInput(attrs={'placeholder':'Enter your address...'}))
+    amount = forms.IntegerField(label='amount',required=True, widget=forms.NumberInput(attrs={'placeholder':'Ingresa cantidad...', 'class': 'price-box'}))
+    def clean_amount(self):
+        amount = self.cleaned_data['amount']
+        if amount<=0:
+            raise forms.ValidationError('The amount must be greater than zero')
+        return amount
+
 class InvestorCreationForm(UserCreationForm):
     password1 = forms.CharField(label='password1', widget=forms.PasswordInput(
         attrs={

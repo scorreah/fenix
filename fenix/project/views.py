@@ -5,7 +5,6 @@ from projectowner.models import ProjectOwner
 from .forms import FormProject, DoInvestmentForm
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
-from paypal.standard.forms import PayPalPaymentsForm
 
 def home(request):
     projects = Project.objects.all()
@@ -18,15 +17,6 @@ def home(request):
 
     return render(request, 'project_home.html',
     {'projects': projects, 'category':category})
-
-def investment(request, project_id):
-    project = get_object_or_404(Project,pk=project_id)
-    if request.method == 'POST':
-        form = DoInvestmentForm(request.POST)
-        if form.is_valid():
-            if request.user.user_investor:
-                investor = User.objects.get(username = request.user)
-
 
 def detail(request, project_id):
     project = get_object_or_404(Project,pk=project_id)
