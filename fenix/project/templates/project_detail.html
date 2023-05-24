@@ -21,29 +21,9 @@
         <p>
             <span class="sponsor">{{ project.remaining_time }} </span> <span class="total">  días restantes.</span>
         </p>
-        <!-- <a href="{% url 'projects' %}" class="btn">Patrocinar <i class='bx bxs-right-arrow' ></i></a> -->
+        {% if user.user_investor %}
         <a href="{% url 'projects.invest' project.id %}" class="btn2"> Patrocina ahora <i class='bx bx-money-withdraw'></i></a>
-        
-        <!-- {% if user.user_investor %}
-        <form method="post">
-            {% csrf_token %}
-            <div class="opciones">
-                <label for="{{ f.id_for_label }}"></label>
-                <div class="form-warp">
-                    {{form.amount}}
-                </div>
-                {% if form.amount.errors %}
-                <ul>
-                    {% for error in form.amount.errors %}
-                        <li class="errores">{{error}}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </div>
-            <button type="submit" class="" href="{% url 'projects.detail' project_id %}">Patrocinar<i class='bx bxs-right-arrow' ></i></button>
-        </form>
-        {% endif %} -->
-        
+        {% endif %}
     </div>
     
     <div class="home-img">
