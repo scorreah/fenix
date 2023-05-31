@@ -56,5 +56,5 @@ class ProjectModelTest(TestCase):
             amount=1000.00,
         )
         investors = self.project.my_investors()
-        self.assertIn(investor1, investors)
-        self.assertIn(investor2, investors)
+        self.assertTrue(any(invest['investor'] == investor1 for invest in investors))
+        self.assertTrue(any(invest['investor'] == investor2 for invest in investors))
