@@ -7,15 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
+    <script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js "></script>
 </head>
 <body>
-    {% if messages %}
-        <ul class="bx-message">
-        {% for message in messages %}
-            <li class="bx-message-check">{{ message }}</li>
-        {% endfor %}
-        </ul>
-    {% endif %}
+    {% if messages %} {% for m in messages %} <script> Swal.fire({ "title": "{{m}}", "icon":"{{m.tags}}" }) </script> {% endfor %} {% endif %}
     <div class="homebox">
         <section class="home" id="home">
             <h2>Add Balance</h2>

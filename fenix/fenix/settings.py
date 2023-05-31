@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'investor',
     'adminmanagement',
     'rewards',
+    'paypal',
 ]
 
 MIDDLEWARE = [
